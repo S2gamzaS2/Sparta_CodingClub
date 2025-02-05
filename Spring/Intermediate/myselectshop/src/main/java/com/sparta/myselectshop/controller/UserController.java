@@ -30,16 +30,30 @@ public class UserController {
     private final UserService userService;
     private final FolderService folderService;
 
+    /**
+     * 로그인 페이지 이동
+     * @return
+     */
     @GetMapping("/user/login-page")
     public String loginPage() {
         return "login";
     }
 
+    /**
+     * 회원가입 페이지 이동
+     * @return
+     */
     @GetMapping("/user/signup")
     public String signupPage() {
         return "signup";
     }
 
+    /**
+     * 회원가입
+     * @param requestDto
+     * @param bindingResult
+     * @return
+     */
     @PostMapping("/user/signup")
     public String signup(@Valid SignupRequestDto requestDto, BindingResult bindingResult) {
         // Validation 예외 처리
@@ -57,7 +71,11 @@ public class UserController {
     }
 
 
-    //회원 관련 정보 받기
+    /**
+     * 회원 정보 요청
+     * @param userDetails
+     * @return
+     */
     @GetMapping("/user-info")
     @ResponseBody
     public UserInfoDto getUserInfo(@AuthenticationPrincipal UserDetailsImpl userDetails) {
@@ -68,7 +86,12 @@ public class UserController {
         return new UserInfoDto(username, isAdmin);
     }
 
-
+    /**
+     * 폴더 조회
+     * @param model
+     * @param userDetails
+     * @return
+     */
     @GetMapping("/user-folder")
     public String getUserInfo(Model model, @AuthenticationPrincipal UserDetailsImpl userDetails) {
         model.addAttribute("folders", folderService.getFolders(userDetails.getUser()));
