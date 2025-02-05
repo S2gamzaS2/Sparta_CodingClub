@@ -61,4 +61,18 @@ public class ProductController {
                 page-1, size, sortBy, isAsc);
     }
 
+    /**
+     * 폴더 추가
+     * @param productId
+     * @param folderId
+     * @param userDetails
+     */
+    @PostMapping("/products/{productId}/folder")
+    public void addFolder(
+            @PathVariable Long productId,
+            @RequestParam Long folderId,
+            @AuthenticationPrincipal UserDetailsImpl userDetails
+    ) {
+        productService.addFolder(productId, folderId, userDetails.getUser());
+    }
 }
