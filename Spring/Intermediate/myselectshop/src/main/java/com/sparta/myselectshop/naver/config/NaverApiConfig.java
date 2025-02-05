@@ -12,5 +12,4 @@ import org.springframework.stereotype.Component;
 public class NaverApiConfig {
     private String id;
     private String pw;
-
 }
