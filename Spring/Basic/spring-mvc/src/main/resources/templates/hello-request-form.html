@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Request</title>
+</head>
+<body>
+<h2>GET /star/{name}/age/{age}</h2>
+<form id="helloPathForm">
+    <div>
+        이름: <input name="name" type="text">
+    </div>
+    <div>
+        나이: <input name="age" type="text">
+    </div>
+</form>
+<div>
+    <button id="helloPathFormSend">전송</button>
+</div>
+<br>
+
+<h2>GET /hello/request/form/param</h2>
+<form method="GET" action="/hello/request/form/param">
+    <div>
+        이름: <input name="name" type="text">
+    </div>
+    <div>
+        나이: <input name="age" type="text">
+    </div>
+    <button>전송</button>
+</form>
+
+<br>
+
+<h2>POST /hello/request/form/param</h2>
+<form method="POST" action="/hello/request/form/param">
+    <div>
+        이름: <input name="name" type="text">
+    </div>
+    <div>
+        나이: <input name="age" type="text">
+    </div>
+    <button>전송</button>
+</form>
+<br>
+
+<h2>POST /hello/request/form/model</h2>
+<form method="POST" action="/hello/request/form/model">
+    <div>
+        이름: <input name="name" type="text">
+    </div>
+    <div>
+        나이: <input name="age" type="text">
+    </div>
+    <button>전송</button>
+</form>
+<br>
+
+<h2>GET /hello/request/form/param/model </h2>
+<form method="GET" action="/hello/request/form/param/model">
+    <div>
+        이름: <input name="name" type="text">
+    </div>
+    <div>
+        나이: <input name="age" type="text">
+    </div>
+    <button>전송</button>
+</form>
+<br>
+
+<h2>POST /hello/request/form/json</h2>
+<form id="helloJsonForm">
+    <div>
+        이름: <input name="name" type="text">
+    </div>
+    <div>
+        나이: <input name="age" type="text">
+    </div>
+</form>
+<div>
+    <button id="helloJsonSend">전송</button>
+</div>
+<div>
+    <div id="helloJsonResult"></div>
+</div>
+</body>
+<script>
+    // GET /star/{name}/age/{age}
+    const helloPathForm = document.querySelector("#helloPathFormSend")
+    helloPathForm.onclick = (e) => {
+        const form = document.querySelector("#helloPathForm");
+        const name = form.querySelector('input[name="name"]').value;
+        const age = form.querySelector('input[name="age"]').value;
+        const relativeUrl = `/hello/request/star/${name}/age/${age}`;
+        window.location.href = relativeUrl;
+    }
+
+    // POST /hello/request/form/json
+    const helloJson = document.querySelector("#helloJsonSend")
+    helloJson.onclick = async (e) => {
+        const form = document.querySelector("#helloJsonForm");
+
+        const data = {
+            name: form.querySelector('input[name="name"]').value,
+            age: form.querySelector('input[name="age"]').value
+        }
+
+        const response = await fetch('/hello/request/form/json', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+
+        const text = await response.text(); // read response body as text
+        document.querySelector("#helloJsonResult").innerHTML = text;
+    };
+</script>
+</html>
