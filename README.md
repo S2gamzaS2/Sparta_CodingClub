@@ -1,8 +1,8 @@
-## 📚 Sparta Coding Club
+# 📚 Sparta Coding Club
 
-### 💡 Spring
+## 🌱 Spring
 
-#### 🌱 Spring Basic
+### # Spring Basic
 1. Gradle
 2. Server
 3. HTTP
@@ -15,21 +15,21 @@
 
 <br>
 
-#### 🌿 Spring Intermediate
+### # Spring Intermediate
 
 <br>
 
-#### 🌳 Spring Advanced
-
-<br>
-<br>
-
-### 🐳 Docker + CI/CD
+### # Spring Advanced
 
 <br>
 <br>
 
-### 🏗️ MSA(Microservice Architecture)
+## 🐳 Docker + CI/CD
+
+<br>
+<br>
+
+## 🏗️ MSA(Microservice Architecture)
 
 
 
