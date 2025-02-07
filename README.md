@@ -27,6 +27,11 @@
 <br>
 <br>
 
+## 🗄️ JPA
+
+<br>
+<br>
+
 ## 🐳 Docker + CI/CD
 
 <br>
