@@ -40,6 +40,6 @@
 
 ## 🏗️ MSA(Microservice Architecture)
 1. Spring Cloud
-
-
+2. Service Discovery
+3. Load Balancing
 
