@@ -40,6 +40,7 @@
 
 ## 🏗️ MSA(Microservice Architecture)
 1. Spring Cloud
-2. Service Discovery
-3. Load Balancing
+2. 서비스 디스커버리
+3. 로드밸런싱
+4. 서킷브레이커
 
