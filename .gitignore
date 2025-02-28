@@ -1,2 +1,13 @@
 Spring/Intermediate/myselectshop/src/main/resources/application.properties
 .DS_Store
+MSA/Service discovery/.idea/gradle.xml
+MSA/Service discovery/.idea/misc.xml
+MSA/Service discovery/.idea/modules.xml
+MSA/Service discovery/.idea/Service discovery.iml
+MSA/Service discovery/.idea/vcs.xml
+MSA/Load Balancing/.idea/vcs.xml
+MSA/Load Balancing/.idea/compiler.xml
+MSA/Load Balancing/.idea/gradle.xml
+MSA/Load Balancing/.idea/Load Balancing.iml
+MSA/Load Balancing/.idea/misc.xml
+MSA/Load Balancing/.idea/modules.xml

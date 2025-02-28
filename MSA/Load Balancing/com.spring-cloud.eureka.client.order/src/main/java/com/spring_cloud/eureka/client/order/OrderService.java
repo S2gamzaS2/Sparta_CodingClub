@@ -14,9 +14,9 @@ public class OrderService {
 
     public String getOrder(String orderId) {
         if(orderId.equals("1")) {
-            String productId = "2";
+            String productId = "상품아이디👊";
             String productInfo = getProductInfo(productId);
-            return "Your order is " + orderId + " and (product-service에서 가져온 정보)-> " + productInfo;
+            return "Order Id = " + orderId + " And~ \n (product-service에서 가져온 정보)-> " + productInfo;
         }
         return "Not exist order...";
     }
