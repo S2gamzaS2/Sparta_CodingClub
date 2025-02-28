@@ -1,4 +1,4 @@
-package com.spring_cloud.resilience4j.sample;
+package com.spring_cloud.resilience4j.sample.product;
 
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
@@ -35,6 +35,7 @@ public class ProductService {
 
         return new Product(productId, "Sample Product : " + productId);
     }
+
 
     public Product fallbackGetProductDetails(String productId, Throwable t) {
         log.error("####Fallback triggered for productId: {} due to: {}", productId, t.getMessage());

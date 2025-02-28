@@ -1,4 +1,4 @@
-package com.spring_cloud.resilience4j.sample;
+package com.spring_cloud.resilience4j.sample.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
