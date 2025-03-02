@@ -35,6 +35,7 @@
 
 ## 🐳 Docker + CI/CD
 
+1. <a href="https://github.com/S2gamzaS2/github-action-sample">Github Actions CI/CD</a>
 <br>
 <br>
 
@@ -45,4 +46,6 @@
 4. 서킷브레이커
 5. API Gateway
 6. Security
-
+7. Config
+8. 분산추적
+9. 이벤트드리븐
