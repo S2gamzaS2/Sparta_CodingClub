@@ -57,12 +57,12 @@
 <br>
 
 ## 🔥 Project Management - Advanced
-1. <a href="https://github.com/S2gamzaS2/docker-practice">Docker / Docker Compose</a>
+ <a href="https://github.com/S2gamzaS2/docker-practice">Docker / Docker Compose</a>
 <br>
 <br>
 
 ## 💾 인메모리 저장소 및 캐싱 전략
-
+1. redis-spring
 <br>
 <br>
 
