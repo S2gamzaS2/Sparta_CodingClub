@@ -60,3 +60,20 @@ ZRANGE articles:ranks 0 0 REV
 2. 주문에 대한 CRUD를 진행하는 기능
    1. `ItemOrder`의 속성값들을 ID를 제외하고 클라이언트에 전달
    2. 성공하면 저장된 `ItemOrder`를 사용자에게 응답
+
+<br>
+
+## 4. Spring Boot 프로젝트 실습2
+   실제 Entity 등은 만들지 않고 Redis에 저장만 <br>
+   
+- Redis의 문자열은 저장된 데이터가 정수라면 `INCR`, `DECR` 등으로 값을 쉽게 조정
+- 추가로 존재하지 않는 데이터에 대해 실행할 경우 0으로 초기화
+- `INCR articles:{id}`
+
+<br>
+
+- 만약 날짜가 바뀔 때 데이터를 저장하고 싶다면 
+  - Key를 `articles:{id}:today` 등으로 만들고
+  - `INCR articles:{id}:today`
+  - 날짜가 바뀌는 시점에 `RENAME`으로 해당 날짜 기록
+    - `RENAME articles:{id}:today articles:{id}:20XX-XX-XX`
