@@ -3,6 +3,8 @@ package com.example.redis.controller;
 import com.example.redis.dto.ItemDto;
 import com.example.redis.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,5 +40,11 @@ public class ItemController {
     @DeleteMapping("/{id}")
     public void deleteItem(@PathVariable("id") Long id) {
         itemService.delete(id);
+    }
+
+    @GetMapping("/search")
+    public Page<ItemDto> search(@RequestParam (name = "q") String query,
+                                Pageable pageable) {
+        return itemService.searchByName(query, pageable);
     }
 }

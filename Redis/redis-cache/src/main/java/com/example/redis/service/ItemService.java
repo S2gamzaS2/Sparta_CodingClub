@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -75,5 +77,15 @@ public class ItemService {
     @CacheEvict(cacheNames = {"itemAllCache", "itemCache"}, allEntries = true)
     public void delete(Long id) {
             itemRepository.deleteById(id);
+    }
+
+
+
+
+
+    @Cacheable(cacheNames = "itemSearchCache", key = "{ args[0], args[1].pageNumber, args[1].pageSize }")
+    public Page<ItemDto> searchByName(String query, Pageable pageable) {
+        return itemRepository.findAllByNameContains(query, pageable)
+                .map(ItemDto::fromEntity);
     }
 }
