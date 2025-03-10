@@ -33,6 +33,7 @@ public class CartService {
         );
         int count = Optional.ofNullable(hashOps.get(keyString.formatted(sessionId), dto.getItem()))
                 .orElse(0);
+        // 0보다 작아지면 삭제
         if (count <= 0) {
             hashOps.delete(keyString.formatted(sessionId), dto.getItem());
         }
