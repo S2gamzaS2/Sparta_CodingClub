@@ -2,11 +2,12 @@ package com.market.order.dto;
 
 import com.market.order.entity.Order;
 import com.market.order.message.DeliveryMessage;
+import lombok.Data;
 import lombok.Getter;
 
 import java.util.UUID;
 
-@Getter
+@Data
 public class OrderRequestDto {
     private String userId;
     private Integer productId;
