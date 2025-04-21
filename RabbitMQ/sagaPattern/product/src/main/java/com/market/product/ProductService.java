@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Slf4j
 @Service
@@ -36,6 +37,11 @@ public class ProductService {
   public void rollbackProduct(DeliveryMessage deliveryMessage) {
 
     log.info("**** PRODUCT ROLLBACK~!");
+
+    // product에서 에러가 터졌을 경우 (productId != 1 || productQuantity > 1)
+    if(!StringUtils.hasText(deliveryMessage.getErrorType())) {
+      deliveryMessage.setErrorType("PRODUCT_ERROR");
+    }
 
     rabbitTemplate.convertAndSend(errOrderQueue, deliveryMessage);
   }
