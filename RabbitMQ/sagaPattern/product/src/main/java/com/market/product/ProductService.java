@@ -14,6 +14,9 @@ public class ProductService {
   @Value("${message.queue.payment}")
   private String paymentQueue;
 
+  @Value("${message.queue.err.order}")
+  private String errOrderQueue;
+
   private final RabbitTemplate rabbitTemplate;
 
   public void reduceProductAmount(DeliveryMessage deliveryMessage) {
@@ -22,10 +25,18 @@ public class ProductService {
     Integer productQuantity = deliveryMessage.getProductQuantity();
 
     if(productId != 1 || productQuantity > 1) {
+      this.rollbackProduct(deliveryMessage);
       return;
     }
 
     rabbitTemplate.convertAndSend(paymentQueue, deliveryMessage);
   }
 
+
+  public void rollbackProduct(DeliveryMessage deliveryMessage) {
+
+    log.info("**** PRODUCT ROLLBACK~!");
+
+    rabbitTemplate.convertAndSend(errOrderQueue, deliveryMessage);
+  }
 }
