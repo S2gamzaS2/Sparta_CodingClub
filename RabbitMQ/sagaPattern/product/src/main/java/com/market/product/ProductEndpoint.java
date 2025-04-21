@@ -19,4 +19,11 @@ public class ProductEndpoint {
     productService.reduceProductAmount(deliveryMessage);
   }
 
+  @RabbitListener(queues = "${message.queue.err.product}")
+  public void reviceErrorMessage(DeliveryMessage deliveryMessage) {
+
+    log.info("#### ERROR RECEIVE FROM PAYMENT!!!");
+    productService.rollbackProduct(deliveryMessage);
+  }
+
 }
