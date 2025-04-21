@@ -4,6 +4,7 @@ import java.util.UUID;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderEndpoint {
 
   private final OrderService orderService;
+
+  @RabbitListener(queues = "${message.queue.err.order}")
+  private void errOrder(DeliveryMessage deliveryMessage) {
+    log.info("***** ERROR RECEIVE FROM PRODUCT!!");
+    orderService.rollbackOrder(deliveryMessage);
+  }
 
   @GetMapping("/order/{orderId}")
   public ResponseEntity<Order> getOrder(@PathVariable UUID orderId) {

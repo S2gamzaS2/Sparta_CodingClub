@@ -40,4 +40,10 @@ public class OrderService {
     return orderStore.get(orderId);
   }
 
+
+  public void rollbackOrder(DeliveryMessage deliveryMessage) {
+
+    Order order = orderStore.get(deliveryMessage.getOrderId());
+    order.cancelOrder(deliveryMessage.getErrorType());
+  }
 }
